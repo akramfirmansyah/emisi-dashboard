@@ -10,6 +10,9 @@ app.set("views", "./views");
 // Set EJS as Views Engine
 app.set("view engine", "ejs");
 
+// Set Public folder
+app.use("/public", express.static("public"));
+
 app.use("/", routes);
 // app.get("/tamlan", (req, res) => {
 //   return res.render("tamlan", {
