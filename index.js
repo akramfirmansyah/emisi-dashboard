@@ -20,6 +20,9 @@ app.set("views", "./views");
 // Set EJS as Views Engine
 app.set("view engine", "ejs");
 
+// Set Public folder
+app.use("/public", express.static("public"));
+
 app.use("/", routes);
 
 const port = process.env.PORT ?? 3000;
