@@ -3,6 +3,6 @@ const TamlanRoutes = require("./tamlan/tamlan.routes");
 
 const route = Router();
 
-route.use("/tamlan", TamlanRoutes);
+route.use("/tamanlanrea", TamlanRoutes);
 
 module.exports = route;
