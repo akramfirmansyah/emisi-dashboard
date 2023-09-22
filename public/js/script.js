@@ -1,9 +1,13 @@
-var map = L.map("map", {
-  center: [-5.1334425, 119.4877655],
-  zoom: 13,
-});
+var map = L.map("map").setView([-5.136848, 119.491301], 16);
 
-L.marker([-5.1334425, 119.4877655])
+L.tileLayer(
+  "https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=sfHNL4IHHmzOiJZf4jtd",
+  {
+    maxZoom: 18,
+  }
+).addTo(map);
+
+L.marker([-5.13307, 119.488603])
   .addTo(map)
-  .bindPopup("<p>A pretty CSS popup.<br> Easily customizable.</p>")
+  .bindPopup("<h1>Rektorat</h1>")
   .openPopup();
