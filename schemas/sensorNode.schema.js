@@ -1,10 +1,8 @@
-const { Schema, Types } = require("mongoose");
-const id = Schema.ObjectId;
+const { Schema } = require("mongoose");
 
 module.exports = {
-  id,
-  airTemperature: Number,
-  co2: Number,
-  humadity: Number,
-  noise: Number,
+  airTemperature: Schema.Types.Number,
+  co2: Schema.Types.Number,
+  humidity: Schema.Types.Number,
+  noise: Schema.Types.Number,
 };

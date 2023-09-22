@@ -7,6 +7,21 @@
   font-family: "Poppins", sans-serif;
 }
 
+.leaflet-control-attribution {
+  display: none;
+}
+
+.navbar__section {
+  background-color: #eb2629;
+}
+
+.navbar__section a {
+  color: #fff;
+}
+.navbar__section a:hover {
+  color: #fff;
+}
+
 .container__main {
   height: 100%;
   display: flex;
@@ -24,6 +39,48 @@
   aspect-ratio: 5 / 3;
 }
 
+#map {
+  height: 40vw;
+}
+
+.container__node {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__node h5 {
+  font-size: 1rem;
+}
+
+.container__sensor {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 4px;
+  row-gap: 8px;
+  text-wrap: nowrap;
+}
+
+.card__sensor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__sensor p {
+  font-size: 0.75rem;
+  text-align: center;
+  margin: 0;
+}
+
+.card__sensor span {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 @media screen and (min-width: 992px) {
   .container__average {
     grid-template-columns: repeat(4, 1fr);
@@ -37,5 +94,9 @@
   .container__average {
     grid-template-columns: repeat(1, 1fr);
     margin-right: 1rem;
+  }
+
+  #map {
+    height: 100%;
   }
 }
