@@ -25,7 +25,7 @@ route.get("/", async (req, res, next) => {
     const node = data[nodeKey];
     sumAirTemperature += node.airTemperature;
     sumCo2 += node.co2;
-    sumHumidity += node.humadity;
+    sumHumidity += node.humidity;
     sumNoise += node.noise;
   }
 
@@ -38,17 +38,17 @@ route.get("/", async (req, res, next) => {
     avgAirTemperature,
     avgCo2,
     avgHumidity,
-    avgNoise
+    avgNoise,
   };
 
   const details = {
     rectorate: data[0],
     gate1: data[1],
     gate2: data[2],
-    avarage
+    avarage,
   };
 
-  res.render('tamanlanrea', { details })
+  res.render("tamalanrea", { details });
 });
 
 module.exports = route;
