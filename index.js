@@ -5,6 +5,8 @@ const cors = require("cors");
 require("dotenv").config();
 
 const routes = require("./routes");
+const notFound = require("./middleware/notFound");
+const serverError = require("./middleware/serverError");
 require("./db");
 
 const app = express();
@@ -34,6 +36,9 @@ app.use("/public", express.static("public"));
 app.use("/leaflet", express.static(__dirname + "/node_modules/leaflet/dist"));
 
 app.use("/", routes);
+
+app.use(notFound);
+app.use(serverError);
 
 const port = process.env.PORT ?? 3000;
 const host = process.env.WEB_HOST ?? "http://localhost";

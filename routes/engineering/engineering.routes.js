@@ -1,19 +1,13 @@
 const { Router } = require("express");
-const SensorNode1 = require("../../models/sensorNode1.models");
-const SensorNode2 = require("../../models/sensorNode2.models");
-const SensorNode3 = require("../../models/sensorNode3.models");
+const SensorNode4 = require("../../models/sensorNode4.models");
 
 const route = Router();
 
 route.get("/", async (req, res, next) => {
   try {
-    const promises = [
-      SensorNode1.findOne({}, {}, { sort: { _id: 1 } }),
-      SensorNode2.findOne({}, {}, { sort: { _id: 1 } }),
-      SensorNode3.findOne({}, {}, { sort: { _id: 1 } }),
-    ];
-
-    const data = await Promise.all(promises);
+    const data = await Promise.all([
+      SensorNode4wewe.findOne({}, {}, { sort: { _id: 1 } })
+    ]);
 
     let sumAirTemperature = 0;
     let sumCo2 = 0;
@@ -43,9 +37,7 @@ route.get("/", async (req, res, next) => {
     };
 
     const details = {
-      rectorate: data[0],
-      gate1: data[1],
-      gate2: data[2],
+      engineering: data[0],
       avarage,
     };
 
