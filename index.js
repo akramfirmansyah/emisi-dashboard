@@ -35,6 +35,10 @@ app.use("/public", express.static("public"));
 
 app.use("/leaflet", express.static(__dirname + "/node_modules/leaflet/dist"));
 
+app.get("/", (req, res, next) => {
+  res.render("index");
+});
+
 app.use("/", routes);
 
 app.use(notFound);

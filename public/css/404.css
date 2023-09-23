@@ -1,0 +1,41 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+img {
+  height: 190px;
+  width: 240px;
+}
+
+p {
+  color: #858585;
+}
+
+.btn {
+  padding: 0.75rem 1rem;
+}
+
+.btn__link {
+  background-color: #eb2629;
+  color: #fff;
+}
+
+.btn__link:hover {
+  background-color: #b11d1f;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  img {
+    height: 200px;
+    width: 340px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  img {
+    height: 300px;
+    width: 440px;
+  }
+}
