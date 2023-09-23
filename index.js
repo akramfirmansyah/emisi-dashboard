@@ -19,7 +19,7 @@ app.use(cors());
 app.use(function (req, res, next) {
   res.setHeader(
     "Content-Security-Policy",
-    "script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net;"
+    "script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://cdn.jsdelivr.net https://unpkg.com/;"
   );
   next();
 });
