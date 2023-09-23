@@ -14,3 +14,35 @@
 a {
   text-decoration: none;
 }
+
+.navbar__section {
+  background-color: var(--primary-red);
+}
+
+.navbar__section a {
+  color: #fff;
+}
+.navbar__section a:hover {
+  color: #fff;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+.material-icons.md-64 {
+  font-size: 64px;
+}
+
+.btn {
+  padding: 0.75rem 1rem;
+}
+
+.btn__link {
+  background-color: #eb2629;
+  color: #fff;
+}
+
+.btn__link:hover {
+  background-color: #b11d1f;
+  color: #fff;
+}

@@ -6,7 +6,7 @@ const route = Router();
 route.get("/", async (req, res, next) => {
   try {
     const data = await Promise.all([
-      SensorNode4.findOne({}, {}, { sort: { _id: 1 } })
+      SensorNode4.findOne({}, {}, { sort: { _id: 1 } }),
     ]);
 
     let sumAirTemperature = 0;
@@ -41,7 +41,7 @@ route.get("/", async (req, res, next) => {
       avarage,
     };
 
-    res.render("tamalanrea", { details });
+    res.render("engineering", { details });
     return;
   } catch (error) {
     next(error);

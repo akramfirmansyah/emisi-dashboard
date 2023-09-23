@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <%- include('partials/_header') %>
     <!-- Title -->
     <title>
-      UNHAS Emission Dashboard in Tamalanrea: Environmental Sustainability
-      Hasanuddin University
+      UNHAS Emission Dashboard at the Faculty of Engineering: Environmental
+      Sustainability, Hasanuddin University
     </title>
     <meta
       name="description"
-      content="Explore the UNHAS Emissions Dashboard in Tamalanrea for monitoring environmental emissions, sustainability efforts, and UNHAS's contribution to protecting nature in the Tamalanrea region. Discover real-time data and initiatives that support a better environment at UNHAS."
+      content="Explore the UNHAS Emissions Dashboard at the Faculty of Engineering for monitoring environmental emissions, sustainability efforts, and UNHAS's contribution to protecting nature in the Gowa region. Discover real-time data and initiatives that support a better environment at UNHAS."
     />
 
     <!-- Leaflet -->
@@ -88,7 +88,7 @@
     <script src="/leaflet/leaflet.js"></script>
 
     <script>
-      var map = L.map("map").setView([-5.135973, 119.490643], 15);
+      var map = L.map("map").setView([-5.23114, 119.502528], 17);
 
       L.tileLayer(
         "https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=sfHNL4IHHmzOiJZf4jtd",
@@ -100,73 +100,25 @@
 
       var markers = [
         {
-          coordinates: [-5.13307, 119.488603],
+          coordinates: [-5.23114, 119.502528],
           popupText: `<div class="container__node">
-          <h5 class="">Rectorate</h5>
+          <h5 class="">Engineering</h5>
           <div class="container__sensor">
             <div class="card__sensor">
               <p>CO2</p>
-              <span><%= details.rectorate['co2'].toFixed(1) %></span>
+              <span><%= details.engineering['co2'].toFixed(1) %></span>
             </div>
             <div class="card__sensor">
               <p>Noise</p>
-              <span><%= details.rectorate['noise'].toFixed(1) %></span>
+              <span><%= details.engineering['noise'].toFixed(1) %></span>
             </div>
             <div class="card__sensor">
               <p>Air Temperature</p>
-              <span><%= details.rectorate['airTemperature'].toFixed(1) %></span>
+              <span><%= details.engineering['airTemperature'].toFixed(1) %></span>
             </div>
             <div class="card__sensor">
               <p>Humidity</p>
-              <span><%= details.rectorate['humidity'].toFixed(1) %></span>
-            </div>
-          </div>
-        </div>`,
-        },
-        {
-          coordinates: [-5.140262, 119.488634],
-          popupText: `<div class="container__node">
-          <h5 class="">Gate 1</h5>
-          <div class="container__sensor">
-            <div class="card__sensor">
-              <p>CO2</p>
-              <span><%= details.gate1['co2'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Noise</p>
-              <span><%= details.gate1['noise'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Air Temperature</p>
-              <span><%= details.gate1['airTemperature'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Humidity</p>
-              <span><%= details.gate1['humidity'].toFixed(1) %></span>
-            </div>
-          </div>
-        </div>`,
-        },
-        {
-          coordinates: [-5.135506, 119.496015],
-          popupText: `<div class="container__node">
-          <h5 class="">Gate 2</h5>
-          <div class="container__sensor">
-            <div class="card__sensor">
-              <p>CO2</p>
-              <span><%= details.gate2['co2'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Noise</p>
-              <span><%= details.gate2['noise'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Air Temperature</p>
-              <span><%= details.gate2['airTemperature'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Humidity</p>
-              <span><%= details.gate2['humidity'].toFixed(1) %></span>
+              <span><%= details.engineering['humidity'].toFixed(1) %></span>
             </div>
           </div>
         </div>`,
