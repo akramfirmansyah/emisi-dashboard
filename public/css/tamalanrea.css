@@ -20,7 +20,7 @@
 }
 
 #map {
-  height: 40vw;
+  height: calc(100vh - 68px - 3rem);
 }
 
 .container__node {

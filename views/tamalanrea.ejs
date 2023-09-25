@@ -17,12 +17,15 @@
 
     <link rel="stylesheet" href="/public/css/tamalanrea.css" />
   </head>
-  <body>
+  <body class="vh-100 d-flex flex-column">
     <%- include('partials/_nav') %>
-    <div class="container mt-2">
-      <div class="container container__main">
+    <div class="my-2 px-5 h-100">
+      <div class="container__main">
         <div class="mb-3 mb-xl-0">
-          <div class="container__average gap-4">
+          <div class="container__average gap-2 h-100">
+            <div class="p-2 d-flex justify-content-center align-items-center">
+              <h2 class="fw-bold fs-3">Average</h2>
+            </div>
             <div class="p-2 card shadow-sm">
               <div
                 class="card-body d-flex justify-content-between align-items-center gap-2"
@@ -88,7 +91,7 @@
     <script src="/leaflet/leaflet.js"></script>
 
     <script>
-      var map = L.map("map").setView([-5.135973, 119.490643], 15);
+      var map = L.map("map").setView([-5.1356687, 119.4901275], 16);
 
       L.tileLayer(
         "https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=sfHNL4IHHmzOiJZf4jtd",
