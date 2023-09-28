@@ -7,7 +7,7 @@ require("dotenv").config();
 const routes = require("./routes");
 const notFound = require("./middleware/notFound");
 const serverError = require("./middleware/serverError");
-require("./db");
+const connect = require("./db");
 
 const app = express();
 
@@ -15,6 +15,8 @@ const app = express();
 app.use(compression());
 app.use(helmet());
 app.use(cors());
+
+connect();
 
 app.use(function (req, res, next) {
   res.setHeader(
@@ -47,6 +49,6 @@ app.use(serverError);
 const port = process.env.PORT ?? 3000;
 const host = process.env.WEB_HOST ?? "http://localhost";
 
-app.listen(port, () => {
-  console.log(`Listen on ${host}:${port}`);
+const server = app.listen(3000, () => {
+  console.log(`Listen on ${host}:${server.address().port}`);
 });
