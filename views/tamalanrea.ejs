@@ -13,7 +13,11 @@
     />
 
     <!-- Leaflet -->
-    <link rel="stylesheet" href="/emisi/leaflet/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="/emisi/node_modules/leaflet/dist/leaflet.css"
+    />
+    <script src="/emisi/node_modules/leaflet/dist/leaflet.js"></script>
 
     <link rel="stylesheet" href="/emisi/public/css/tamalanrea.css" />
   </head>
@@ -33,7 +37,7 @@
                 <div class="d-flex flex-column">
                   <h5 class="card-title fs-4 fw-bold">Carbon Dioxide</h5>
                   <p class="fs-4 fw-semibold mb-0">
-                    <%= details.avarage['avgCo2'].toFixed(1) %> ppm
+                    <span id="averageCo2">0</span> ppm
                   </p>
                 </div>
                 <span class="material-icons md-64"> co2 </span>
@@ -46,7 +50,7 @@
                 <div class="d-flex flex-column">
                   <h5 class="card-title fs-4 fw-bold">Noise</h5>
                   <p class="fs-4 fw-semibold mb-0">
-                    <%= details.avarage['avgNoise'].toFixed(1) %> dBA
+                    <span id="averageNoise">0</span> dBA
                   </p>
                 </div>
                 <span class="material-icons md-48"> graphic_eq </span>
@@ -59,8 +63,7 @@
                 <div class="d-flex flex-column">
                   <h5 class="card-title fs-4 fw-bold">Temperature</h5>
                   <p class="fs-4 fw-semibold mb-0">
-                    <%= details.avarage['avgAirTemperature'].toFixed(1)
-                    %>&#176;C
+                    <span id="averageTemp">0</span>&#176;C
                   </p>
                 </div>
                 <span class="material-icons md-48">thermostat</span>
@@ -73,7 +76,7 @@
                 <div class="d-flex flex-column">
                   <h5 class="card-title fs-4 fw-bold">Humidity</h5>
                   <p class="fs-4 fw-semibold mb-0">
-                    <%= details.avarage['avgHumidity'].toFixed(1) %>%
+                    <span id="averageHum">0</span>%
                   </p>
                 </div>
                 <span class="material-icons md-48">opacity</span>
@@ -87,104 +90,8 @@
       </div>
     </div>
 
-    <!-- Leaflet -->
-    <script src="/emisi/leaflet/leaflet.js"></script>
-
-    <script>
-      var map = L.map("map").setView([-5.1356687, 119.4901275], 16);
-
-      L.tileLayer(
-        "https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=sfHNL4IHHmzOiJZf4jtd",
-        {
-          maxZoom: 18,
-          attribution: "",
-        }
-      ).addTo(map);
-
-      var markers = [
-        {
-          coordinates: [-5.13307, 119.488603],
-          popupText: `<div class="container__node">
-          <h5 class="">Rectorate</h5>
-          <div class="container__sensor">
-            <div class="card__sensor">
-              <p>CO2</p>
-              <span><%= details.rectorate['co2'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Noise</p>
-              <span><%= details.rectorate['noise'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Air Temperature</p>
-              <span><%= details.rectorate['airTemperature'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Humidity</p>
-              <span><%= details.rectorate['humidity'].toFixed(1) %></span>
-            </div>
-          </div>
-        </div>`,
-        },
-        {
-          coordinates: [-5.140262, 119.488634],
-          popupText: `<div class="container__node">
-          <h5 class="">Gate 1</h5>
-          <div class="container__sensor">
-            <div class="card__sensor">
-              <p>CO2</p>
-              <span><%= details.gate1['co2'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Noise</p>
-              <span><%= details.gate1['noise'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Air Temperature</p>
-              <span><%= details.gate1['airTemperature'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Humidity</p>
-              <span><%= details.gate1['humidity'].toFixed(1) %></span>
-            </div>
-          </div>
-        </div>`,
-        },
-        {
-          coordinates: [-5.135506, 119.496015],
-          popupText: `<div class="container__node">
-          <h5 class="">Gate 2</h5>
-          <div class="container__sensor">
-            <div class="card__sensor">
-              <p>CO2</p>
-              <span><%= details.gate2['co2'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Noise</p>
-              <span><%= details.gate2['noise'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Air Temperature</p>
-              <span><%= details.gate2['airTemperature'].toFixed(1) %></span>
-            </div>
-            <div class="card__sensor">
-              <p>Humidity</p>
-              <span><%= details.gate2['humidity'].toFixed(1) %></span>
-            </div>
-          </div>
-        </div>`,
-        },
-      ];
-
-      markers.forEach((marker) => {
-        L.marker(marker.coordinates)
-          .addTo(map)
-          .bindPopup(marker.popupText, {
-            closeOnClick: false,
-            autoClose: false,
-          })
-          .openPopup();
-      });
-    </script>
+    <script src="/emisi/public/js/tamalanreaMap.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/emisi/public/js/tamalanreaSocket.js"></script>
   </body>
 </html>

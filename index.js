@@ -2,7 +2,27 @@ const express = require("express");
 const compression = require("compression");
 const helmet = require("helmet");
 const cors = require("cors");
+const http = require("http");
+const mqtt = require("mqtt");
+const socketIo = require("socket.io");
+
 require("dotenv").config();
+
+// Inisialisasi koneksi MQTT ke broker MQTT
+const mqttClient = mqtt.connect("mqtt://broker.emqx.io:1883");
+
+// Atur koneksi MQTT
+mqttClient.on("connect", () => {
+  console.log("Terhubung ke broker MQTT");
+  mqttClient.subscribe("emisiUNHAS");
+});
+
+// Tangani pesan MQTT yang diterima
+mqttClient.on("message", (topic, message) => {
+  if (topic === "emisiUNHAS") {
+    io.emit("mqtt-emisiUNHAS", message.toString());
+  }
+});
 
 const routes = require("./routes");
 const notFound = require("./middleware/notFound");
@@ -10,6 +30,8 @@ const serverError = require("./middleware/serverError");
 const connect = require("./db");
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 
 // middleware
 app.use(compression());
@@ -33,11 +55,11 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 // Set Public folder
-app.use("/public", express.static("public"));
+app.use("/emisi/public", express.static("public"));
 
-app.use("/leaflet", express.static(__dirname + "/node_modules/leaflet/dist"));
+app.use("/emisi/node_modules", express.static(__dirname + "/node_modules"));
 
-app.get("/", (req, res, next) => {
+app.get("/emisi", (req, res, next) => {
   res.render("index");
 });
 
@@ -46,9 +68,13 @@ app.use("/", routes);
 app.use(notFound);
 app.use(serverError);
 
+io.on("connection", (socket) => {
+  console.log("Client Connected on Socket ", socket);
+});
+
 const port = process.env.PORT ?? 3000;
 const host = process.env.WEB_HOST ?? "http://localhost";
 
-const server = app.listen(3000, () => {
+server.listen(port, () => {
   console.log(`Listen on ${host}:${server.address().port}`);
 });
