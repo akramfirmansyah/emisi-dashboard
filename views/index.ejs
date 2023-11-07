@@ -8,17 +8,27 @@
     />
     <title>Welcome to Emisi - Universitas Hasanuddin</title>
 
-    <link rel="stylesheet" href="/envmon/public/css/index.css" />
+    <!-- <link rel="stylesheet" href="/envmon/public/css/index.css" /> -->
+    <link rel="stylesheet" href="/public/css/index.css" />
   </head>
   <body>
-    <%- include('partials/_nav') %>
-    <div
-      class="container d-flex justify-content-center align-items-center container__main"
-    >
-      <div class="d-flex flex-column flex-md-row gap-3">
-        <a href="/envmon/tamalanrea" class="btn btn__link">Tamalanrea</a>
-        <a href="/envmon/engineering" class="btn btn__link">Engineering</a>
+    <div class="container__main">
+      <div class="main__items">
+        <img src="/public/images/bg_rectorate.jpg" alt="background rectorate" />
+        <!-- <a href="/envmon/tamalanrea" class="btn__link">Main Campus</a> -->
+        <a href="/tamalanrea" class="btn__link">Main Campus</a>
       </div>
+      <div class="main__items">
+        <img
+          src="/public/images//bg_engineering.jpg"
+          alt="background Faculty of Engineering"
+        />
+        <!-- <a href="/envmon/engineering" class="btn__link">Faculty of Engineering</a> -->
+        <a href="/engineering" class="btn__link">Faculty of Engineering</a>
+      </div>
+      <a href="/envmon" class="container__logo">
+        <img src="/public/images/Logo-Resmi-Unhas-1.png" alt="logo unhas" />
+      </a>
     </div>
   </body>
 </html>
